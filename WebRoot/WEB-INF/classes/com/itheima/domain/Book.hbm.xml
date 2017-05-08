@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.itheima.domain.Book">
+		<id name="bid" length="6">
+			<generator class="native"></generator>
+		</id>
+<!-- 		一定要指定长度，在创建表的时候优化表所占的内存，减少查询时间 -->
+		
+		<property name="No" length="20"></property>
+		<property name="name" length="20"></property>
+		<property name="price" type="double"></property>
+		<property name="statue" length="1"></property>
+		<property name="start" type="date"></property>
+		<property name="end" type="date"></property>
+		
+		
+		<many-to-one name="user" class="com.itheima.domain.User" column="uid"></many-to-one>
+		
+	</class>
+</hibernate-mapping>

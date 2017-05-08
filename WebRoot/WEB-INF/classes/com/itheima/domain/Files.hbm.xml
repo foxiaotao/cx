@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.itheima.domain.Files">
+		<id name="fid" length="6">
+			<generator class="native"></generator>
+		</id>
+<!-- 		一定要指定长度，在创建表的时候优化表所占的内存，减少查询时间 -->
+		<property name="name" length="100"></property>
+		<property name="url"></property>
+		<property name="approve" length="1"></property>
+		<property name="description"></property>
+		<property name="type" length="1"></property>
+		<property name="uploadtime" type="date"></property>
+		<property name="length"></property>
+		<property name="md5" length="40"></property>
+		
+		<many-to-one name="user" class="com.itheima.domain.User" column="uid"></many-to-one>
+		<many-to-one name="department" class="com.itheima.domain.Department" column="did"></many-to-one>
+		
+	</class>
+</hibernate-mapping>

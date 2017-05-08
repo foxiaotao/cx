@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="files" namespace="/" extends="prvilege-default">
+		<action name="filesAction_*" method="{1}" class="filesAction">
+			<result name="listAction">/WEB-INF/jsp/files/list.jsp</result>
+			<result name="addUI">/WEB-INF/jsp/files/addUI.jsp</result>
+			<result name="action2action" type="redirectAction">filesAction_showFilesByCondition.action</result>
+			<result name="updateUI">/WEB-INF/jsp/files/updateUI.jsp</result>
+			<result name="add">/WEB-INF/jsp/files/addUI.jsp</result>
+			<result name="approveUI">/WEB-INF/jsp/files/approveUI.jsp</result>
+			<result name="toApproveUIAction" type="redirectAction">filesAction_approveUI.action</result>
+			<result name="download" type="stream">
+				<param name="inputName">inputStream</param>
+				<param name="contentType">application/octet-stream</param>
+				<param name="bufferSize">5120</param>
+				<param name="contentDisposition">attachment;filename=${@java.net.URLEncoder@encode(resourceFileName,"UTF-8")}</param>
+			</result>
+			
+			<result name="share">/WEB-INF/jsp/browsefiles/allList.jsp</result>
+			<result name="myself">/WEB-INF/jsp/browsefiles/myselfList.jsp</result>
+			<result name="action2share" type="redirectAction">filesAction_showFilesByConditionshare.action</result>
+		</action>
+	</package>
+</struts>

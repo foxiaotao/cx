@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.itheima.domain.Privilege">
+		<id name="id" length="6">
+			<generator class="assigned"></generator>
+		</id>
+<!-- 		一定要指定长度，在创建表的时候优化表所占的内存，减少查询时间 -->
+		<property name="pid" length="4"></property>
+		<property name="name" length="30"></property>
+		<property name="url"></property>
+		<property name="checked"></property>
+		<property name="open"></property> 
+		<property name="flag" length="1"></property>
+		<property name="icon" length="100"></property>
+		<property name="target" length="10"></property>
+		<property name="isParent"></property>
+		<set name="roles" table="role_privilege">
+			<key>
+				<column name="id"></column>
+			</key>
+			<many-to-many column="rid" class="com.itheima.domain.Role"></many-to-many>
+		</set>
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<!-- 配置自定义拦截器，验证每个请求方法有没有执行权 -->
+	<package name="prvilege-default" namespace="/" extends="struts-default">
+	
+		<interceptors>
+			<interceptor name="myInterceptor" class="com.itheima.intercptor.MyIntercptor"></interceptor>
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>	
+				<interceptor-ref name="myInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myStack"></default-interceptor-ref>
+		
+		<global-results>
+			<result name="privilege_errer">errer.jsp</result>
+			<result name="login" type="redirectAction">loginAction_login.action</result>
+ 			<result name="errHandler">error.jsp</result> 
+		</global-results>
+ 		
+ 		<global-exception-mappings>
+ 			<exception-mapping result="errHandler" exception="java.lang.Exception"></exception-mapping>
+ 			<exception-mapping result="errHandler" exception="java.sql.Exception"></exception-mapping>
+ 			<exception-mapping result="errHandler" exception="java.io.Exception"></exception-mapping>
+ 			<exception-mapping result="errHandler" exception="java.lang.NullPointerException"></exception-mapping>
+ 		</global-exception-mappings>
+ 			 
+	</package>
+	
+	<package name="ajax-default" namespace="/" extends="json-default">
+		<interceptors>
+			<interceptor name="myInterceptor" class="com.itheima.intercptor.MyIntercptor"></interceptor>
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>	
+				<interceptor-ref name="myInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myStack"></default-interceptor-ref>
+		<global-results>
+ 			<result name="privilege_errer">errer.jsp</result>
+			<result name="info_errer">errer.jsp</result>
+			<result name="login" type="redirectAction">loginAction_login.action</result>
+		</global-results>
+	</package>
+	
+	<constant name="struts.devMode" value="true"></constant>
+	<constant name="struts.ui.theme" value="simple"></constant>
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+	<constant name="struts.multipart.maxSize" value="6000000000"></constant>
+	
+
+	<include file="struts/struts-user.xml"></include>
+	<include file="struts/struts-department.xml"></include>
+	<include file="struts/struts-role.xml"></include>
+	<include file="struts/struts-login.xml"></include>
+	<include file="struts/struts-forword.xml"></include>
+	<include file="struts/struts-privilege.xml"></include>
+	<include file="struts/struts-files.xml"></include>
+	<include file="struts/struts-book.xml"></include>
+	<include file="struts/struts-projectfile.xml"></include>
+	<include file="struts/struts-project.xml"></include>
+	<include file="struts/struts-achievement.xml"></include>
+	
+</struts>

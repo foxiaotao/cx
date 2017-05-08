@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="book" namespace="/" extends="prvilege-default">
+		<action name="bookAction_*" method="{1}" class="bookAction">
+			<result name="listAction">/WEB-INF/jsp/book/list.jsp</result>
+			<result name="addUI">/WEB-INF/jsp/book/addUI.jsp</result>
+			<result name="action2action" type="redirectAction">bookAction_showBookByCondition.action</result>
+			<result name="updateUI">/WEB-INF/jsp/book/updateUI.jsp</result>
+			<result name="borrowUI">/WEB-INF/jsp/book/borrowUI.jsp</result>
+			<result name="showBorrowed">/WEB-INF/jsp/book/borrowList.jsp</result>
+			<result name="action2showBorrowed" type="redirectAction">bookAction_showBookByConditionBorrowed.action</result>
+			
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="file" namespace="/" extends="prvilege-default">
+		<action name="projectFileAction_*" method="{1}" class="projectFileAction">
+			<result name="listAction">/WEB-INF/jsp/project/file/list.jsp</result>
+			<result name="addUI">/WEB-INF/jsp/project/file/addUI.jsp</result>
+			<result name="action2action" type="redirectAction">projectFileAction_showAllProjectFile.action</result>
+			<result name="download" type="stream">
+				<param name="inputName">inputStream</param>
+				<param name="contentType">application/octet-stream</param>
+				<param name="bufferSize">5120</param>
+				<param name="contentDisposition">attachment;filename=${@java.net.URLEncoder@encode(resourceFileName,"UTF-8")}</param>
+			</result>
+			
+		</action>
+	</package>
+</struts>

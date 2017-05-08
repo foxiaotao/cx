@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.itheima.domain.Achievement">
+		<id name="aid" length="6">
+			<generator class="native"></generator>
+		</id>
+<!-- 		一定要指定长度，在创建表的时候优化表所占的内存，减少查询时间 -->
+		<property name="name" length="100"></property>
+		<property name="members" length="50"></property>
+		<property name="url" length="255"></property>
+		<property name="year" length="5"></property>
+		<property name="type" length="1"></property>
+		<property name="contextPath" length="255"></property>
+	</class>
+</hibernate-mapping>

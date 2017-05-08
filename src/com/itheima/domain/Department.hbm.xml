@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.itheima.domain.Department">
+		<id name="did" length="6">
+			<generator class="native"></generator>
+		</id>
+<!-- 		一定要指定长度，在创建表的时候优化表所占的内存，减少查询时间 -->
+		<property name="name" length="30"></property>
+		<property name="description"></property>
+		
+		<set name="users" inverse="true">
+			<key>
+				<column name="did"></column>
+			</key>
+			<one-to-many class="com.itheima.domain.User"/>
+		</set>
+		
+		
+		<set name="files">
+			<key>
+				<column name="did"></column>
+			</key>
+			<one-to-many class="com.itheima.domain.Files"/>
+		</set>
+	</class>
+</hibernate-mapping>
